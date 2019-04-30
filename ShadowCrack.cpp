@@ -1,5 +1,5 @@
 #define _XOPEN_SOURCE
-#define NUM_THREADS 6
+#define NUM_THREADS 4
 #include <iostream>
 #include <stdio.h>
 #include <unistd.h>
@@ -111,7 +111,7 @@ void Attack() {
 			cin >> Dictionary;
 			DictionaryFile.open(Dictionary.c_str());
 		}
-		//need to figure out a better way to get words a few at a time=============
+		//need to figure out a better way to get words a few at a time as to not cause an out of memory error
 		while (getline(DictionaryFile, line)) {
 			//Removes caridge return characters (this took me a while to figure out)
 			removeCharsFromString(line, "\r");
@@ -126,7 +126,7 @@ void Attack() {
 		cout << "Length: ";
 		cin >> Depth;
 		//Recursion function that creates words.
-		Recursion(Depth, "", "", Depth);
+		Recursion(Depth);
 		cout << "All possible words calculated" << endl << endl;
 	}
 
